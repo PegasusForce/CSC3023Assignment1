@@ -20,7 +20,9 @@ public:
     //Move Constructor
     StudentRecord(StudentRecord && rhs);
     //Copy Assignment Operator
-    StudentRecord& operator=(const StudentRecord& rhs);
+    StudentRecord& operator=(const StudentRecord & rhs);
+    //Move Assignment Operator
+    StudentRecord& operator=(StudentRecord && rhs);
     
     std::string name;
     std::string surname;
