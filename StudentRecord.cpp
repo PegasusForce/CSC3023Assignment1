@@ -7,10 +7,10 @@
 
 #include "StudentRecord.h"
 
-StudentRecord::StudentRecord() {
-}
+
 
 StudentRecord::StudentRecord(const StudentRecord& orig) {
+    
 }
 
 StudentRecord::~StudentRecord() {
