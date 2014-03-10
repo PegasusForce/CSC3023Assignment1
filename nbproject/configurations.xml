@@ -4,6 +4,7 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>counter.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -39,6 +40,9 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <ccTool>
+          <standard>8</standard>
+        </ccTool>
       </compileType>
       <item path="DataBase.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -47,6 +51,8 @@
       <item path="StudentRecord.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="StudentRecord.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="counter.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -78,6 +84,8 @@
       <item path="StudentRecord.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="StudentRecord.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="counter.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

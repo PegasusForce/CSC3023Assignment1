@@ -8,15 +8,15 @@
 #ifndef STUDENTRECORD_H
 #define	STUDENTRECORD_H
 #include <string>
-#include <iostream>
+
 #include <utility>
-#include <cstdlib>
-class StudentRecord {
-public:
+#include "counter.h"
+class StudentRecord: public sjp::counter<StudentRecord>{
+    public:
     //Default constructor
     StudentRecord(): name("Ulfric"), surname("Stormcloak"), studentNumber("STRULF001"), classRecord("100 100 100 100"), token(0){};
     //Standard constructor
-    StudentRecord(std::string n, std::string sname, std::string snum, std::string cr, int t);
+    StudentRecord(std::string n, std::string sname, std::string snum, std::string cr);
     //Copy Constructor
     StudentRecord(const StudentRecord& orig): name(orig.name), surname(orig.surname), studentNumber(orig.studentNumber), classRecord(orig.classRecord), token(orig.token){};
     //Destructor
@@ -29,12 +29,13 @@ public:
     StudentRecord& operator=(StudentRecord && rhs);
     
     
-private:
+
     std::string name;
     std::string surname;
     std::string studentNumber;
     std::string classRecord;
     int token;
+    private:
 };
 
 #endif	/* STUDENTRECORD_H */

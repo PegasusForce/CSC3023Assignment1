@@ -9,10 +9,41 @@
 
 
 
-StudentRecord::StudentRecord(const StudentRecord& orig) {
+//Destructor
+StudentRecord::~StudentRecord() {
     
 }
 
-StudentRecord::~StudentRecord() {
-}
+//Copy Assignment Operator
+    StudentRecord& StudentRecord::operator=(const StudentRecord & rhs)
+    {
+        if(this != &rhs)
+        {
+            name = rhs.name;
+            surname = rhs.surname;
+            studentNumber = rhs.studentNumber;
+            classRecord = rhs.classRecord;
+            token = rhs.token;
+           
+        }
+        
+    }
+    //Move Assignment Operator
+    StudentRecord& StudentRecord::operator=(StudentRecord && rhs){
+        if(this != &rhs){
+            name = move(rhs.name);
+            surname = move(rhs.surname);
+            studentNumber = move(rhs.studentNumber);
+            classRecord = move(rhs.studentNumber);
+            token = rhs.token;
+        }
+    }
+    //Standard constructor
+    StudentRecord::StudentRecord(std::string n, std::string sname, std::string snum, std::string cr){
+        name = n;
+        surname = sname;
+        studentNumber = snum;
+        classRecord = cr; 
+        token = 0;
+    }
 

@@ -7,6 +7,7 @@
  */
 
 #include <iostream>
+#include "StudentRecord.h"
 void clear(void);
 
 using namespace std;
@@ -29,35 +30,40 @@ int main() {
           cout << "Wizards rule!";
         break;
         case 1:
-            cout << "You chose: add student";
+            cout << "You chose: add student"<<endl;
+                {
+                StudentRecord ghoragdush("Ghoragdush","the Goblinsmasher","GHO003","37 45 49");
+                StudentRecord jothridar("Jo'Thri-Dar","the Thief","JOT004","34 87 68");
+                StudentRecord::print_counts(std::cout, "StudentRecord");
+                       }
         break;    
         case 2:
-            cout << "You chose: delete given student";
+            cout << "You chose: delete given student"<<endl;
         break;
         case 3:
-            cout << "You chose: read database";
+            cout << "You chose: read database"<<endl;
         break;
         case 4:
-            cout << "You chose: save database";
+            cout << "You chose: save database"<<endl;
             break;
         case 5:
-            cout << "You chose: display given student data";
+            cout << "You chose: display given student data"<<endl;
             break;
         case 6:
-            cout << "You chose: grade student";
+            cout << "You chose: grade student"<<endl;
             break;
         case 7:
-            cout << "You chose: display all student data";
+            cout << "You chose: display all student data"<<endl;
             break;
         case 8:
-            cout << "You chose: find winning student";
+            cout << "You chose: find winning student"<<endl;
             break;
     }
     cout<< endl;
     }
     
     
-    
+StudentRecord::print_counts(std::cout, "StudentRecord");
     return 0;
 }
 
