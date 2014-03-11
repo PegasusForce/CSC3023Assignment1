@@ -11,11 +11,32 @@
 void clear(void);
 
 using namespace std;
+using namespace NDXKHA001;
 
 /*
  * Main program
  */
-int main() {
+int main(int argc, char* argv[]) {
+    
+    using namespace std;
+
+	cmdline_parser parser;
+
+	if(!parser.process_cmdline(argc, argv))
+	{
+		std::cerr << "Couldn't process command line arguments" << std::endl;
+		return 1;
+	}
+
+	if(parser.should_print_help())
+		{ parser.print_help(std::cout);	}
+
+	string file_name = parser.get_filename();
+	cout << "Using file located at "+ file_name << endl;
+	cout << "-----------------------------------------" << endl;
+
+	ifstream file(file_name.c_str());
+    
     cout<< "Welcome to the Mage's College of Winterhold student database\n------------------------------------------------------------\n";
 
     int choice;
@@ -35,6 +56,7 @@ int main() {
                 StudentRecord ghoragdush("Ghoragdush","the Goblinsmasher","GHO003","37 45 49");
                 StudentRecord jothridar("Jo'Thri-Dar","the Thief","JOT004","34 87 68");
                 StudentRecord::print_counts(std::cout, "StudentRecord");
+                tokenlib::check_tokens();
                        }
         break;    
         case 2:
@@ -64,6 +86,7 @@ int main() {
     
     
 StudentRecord::print_counts(std::cout, "StudentRecord");
+tokenlib::final_token_check();
     return 0;
 }
 

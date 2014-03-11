@@ -7,7 +7,7 @@
 
 #ifndef DATABASE_H
 #define	DATABASE_H
-
+namespace NDXKHA001{
 class DataBase {
 public:
     DataBase();
@@ -16,6 +16,6 @@ public:
 private:
 
 };
-
+}
 #endif	/* DATABASE_H */
 

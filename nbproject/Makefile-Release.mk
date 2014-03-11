@@ -37,7 +37,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/DataBase.o \
 	${OBJECTDIR}/StudentRecord.o \
-	${OBJECTDIR}/main.o
+	${OBJECTDIR}/cmdline_parser.o \
+	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/tokenlib/tokenlib.o
 
 
 # C Compiler Flags
@@ -74,10 +76,20 @@ ${OBJECTDIR}/StudentRecord.o: StudentRecord.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/StudentRecord.o StudentRecord.cpp
 
+${OBJECTDIR}/cmdline_parser.o: cmdline_parser.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/cmdline_parser.o cmdline_parser.cpp
+
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+
+${OBJECTDIR}/tokenlib/tokenlib.o: tokenlib/tokenlib.cpp 
+	${MKDIR} -p ${OBJECTDIR}/tokenlib
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/tokenlib/tokenlib.o tokenlib/tokenlib.cpp
 
 # Subprojects
 .build-subprojects:

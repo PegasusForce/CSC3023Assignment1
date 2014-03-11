@@ -6,12 +6,13 @@
  */
 
 #include "StudentRecord.h"
-
+using namespace NDXKHA001;
 
 
 //Destructor
 StudentRecord::~StudentRecord() {
-    
+    if(token!=-1)
+    tokenlib::release_token(token);
 }
 
 //Copy Assignment Operator
@@ -23,7 +24,8 @@ StudentRecord::~StudentRecord() {
             surname = rhs.surname;
             studentNumber = rhs.studentNumber;
             classRecord = rhs.classRecord;
-            token = rhs.token;
+            if(token != -1){tokenlib::release_token(token);}
+            token = tokenlib::acquire_token();
            
         }
         
@@ -31,11 +33,12 @@ StudentRecord::~StudentRecord() {
     //Move Assignment Operator
     StudentRecord& StudentRecord::operator=(StudentRecord && rhs){
         if(this != &rhs){
-            name = move(rhs.name);
-            surname = move(rhs.surname);
-            studentNumber = move(rhs.studentNumber);
-            classRecord = move(rhs.studentNumber);
+            name = std::move(rhs.name);
+            surname = std::move(rhs.surname);
+            studentNumber = std::move(rhs.studentNumber);
+            classRecord = std::move(rhs.studentNumber);
             token = rhs.token;
+            rhs.token = -1;
         }
     }
     //Standard constructor
@@ -44,6 +47,6 @@ StudentRecord::~StudentRecord() {
         surname = sname;
         studentNumber = snum;
         classRecord = cr; 
-        token = 0;
+        token = tokenlib::acquire_token();
     }
 

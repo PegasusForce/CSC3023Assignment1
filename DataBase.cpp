@@ -6,7 +6,7 @@
  */
 
 #include "DataBase.h"
-
+using namespace NDXKHA001;
 DataBase::DataBase() {
 }
 
