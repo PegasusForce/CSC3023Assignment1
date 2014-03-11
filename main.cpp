@@ -7,7 +7,9 @@
  */
 
 #include <iostream>
+#include <fstream>
 #include "StudentRecord.h"
+#include "cmdline_parser.h"
 void clear(void);
 
 using namespace std;
@@ -18,7 +20,6 @@ using namespace NDXKHA001;
  */
 int main(int argc, char* argv[]) {
     
-    using namespace std;
 
 	cmdline_parser parser;
 
@@ -35,7 +36,7 @@ int main(int argc, char* argv[]) {
 	cout << "Using file located at "+ file_name << endl;
 	cout << "-----------------------------------------" << endl;
 
-	ifstream file(file_name.c_str());
+	//ifstream file(file_name.c_str());
     
     cout<< "Welcome to the Mage's College of Winterhold student database\n------------------------------------------------------------\n";
 
@@ -51,12 +52,12 @@ int main(int argc, char* argv[]) {
           cout << "Wizards rule!";
         break;
         case 1:
-            cout << "You chose: add student"<<endl;
+ //           cout << "You chose: add student"<<endl;
                 {
                 StudentRecord ghoragdush("Ghoragdush","the Goblinsmasher","GHO003","37 45 49");
                 StudentRecord jothridar("Jo'Thri-Dar","the Thief","JOT004","34 87 68");
-                StudentRecord::print_counts(std::cout, "StudentRecord");
-                tokenlib::check_tokens();
+//                StudentRecord::print_counts(std::cout, "StudentRecord");
+//                tokenlib::check_tokens();
                        }
         break;    
         case 2:
@@ -65,8 +66,13 @@ int main(int argc, char* argv[]) {
         case 3:
             cout << "You chose: read database"<<endl;
         break;
-        case 4:
+        case 4:{
             cout << "You chose: save database"<<endl;
+            ofstream myfile;
+        myfile.open (file_name);
+        myfile << "Writing this to a file.\n";
+        myfile.close();
+        }
             break;
         case 5:
             cout << "You chose: display given student data"<<endl;
