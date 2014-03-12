@@ -21,7 +21,7 @@ using namespace NDXKHA001;
  * Main program
  */
 int main(int argc, char* argv[]) {
-    
+    {
    
 	cmdline_parser parser;
 
@@ -54,11 +54,23 @@ int main(int argc, char* argv[]) {
           cout << "Wizards rule!";
         break;
         case 1:
- //           cout << "You chose: add student"<<endl;
                 {
-                db.add(StudentRecord("Ghoragdush","the Goblinsmasher","GHO003","37 45 49"));
-                StudentRecord::print_counts(std::cout, "StudentRecord");
-                tokenlib::check_tokens();
+                    string name;
+                    string surname;
+                    string snum;
+                    string cr;
+                    cout<<"Enter the student's first name: ";
+                    cin>> name;
+                    cout<<"Enter the student's second name: ";
+                    cin>> surname;
+                    cout<<"Enter the student's student number: ";
+                    cin>>snum;
+                    cout<<"Enter the students class record (e.g. 100 89 75 36 ): ";
+                    cin>>cr;
+                    
+                    db.add(StudentRecord(name, surname, snum, cr));
+      //          StudentRecord::print_counts(std::cout, "StudentRecord");
+      //          tokenlib::check_tokens();
                        }
         break;    
         case 2:
@@ -74,14 +86,12 @@ int main(int argc, char* argv[]) {
         }
         break;
         case 3:
-            cout << "You chose: read database"<<endl;
+          //  cout << "You chose: read database"<<endl;
+            db.read();
         break;
         case 4:{
-            cout << "You chose: save database"<<endl;
-            ofstream myfile;
-        myfile.open (file_name);
-        myfile << "Writing this to a file.\n";
-        myfile.close();
+         //   cout << "You chose: save database"<<endl;
+            db.write();
         }
             break;
         case 5:
@@ -101,10 +111,11 @@ int main(int argc, char* argv[]) {
     }
     
     
+
+}
 StudentRecord::print_counts(std::cout, "StudentRecord");
 tokenlib::final_token_check();
     return 0;
 }
-
 void clear(void) { std::cout << std::string(100,'\n'); }
 

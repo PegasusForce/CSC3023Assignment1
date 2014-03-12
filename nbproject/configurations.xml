@@ -21,7 +21,6 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>DataBase.cpp</itemPath>
-      
       <itemPath>StudentRecord.cpp</itemPath>
       <itemPath>cmdline_parser.cpp</itemPath>
       <itemPath>main.cpp</itemPath>

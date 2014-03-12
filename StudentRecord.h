@@ -30,7 +30,7 @@ class StudentRecord: public sjp::counter<StudentRecord>{
     //Move Assignment Operator
     StudentRecord& operator=(StudentRecord && rhs);
     // output stream operator
-    friend std::ostream & operator<<(std::ostream & out, const StudentRecord & s);
+    
     
     
 
@@ -41,6 +41,7 @@ class StudentRecord: public sjp::counter<StudentRecord>{
     int token;
     private:
 };
+
 }
 #endif	/* STUDENTRECORD_H */
 
