@@ -1,7 +1,7 @@
 CC = g++
 CFLAGS = -std=c++11
 
-assignment1: main.o StudentRecord.o DataBase.o ./tokenlib/libtokenlib.so
+assignment1: main.o StudentRecord.o DataBase.o ./tokenlib/libtokenlib.so cmdline_parser.o
 	$(CC) main.o StudentRecord.o DataBase.o -o assignment1 -L./tokenlib -ltokenlib -lboost_program_options -Wl,-rpath=./tokenlib $(CFLAGS)   
 
 main.o: main.cpp
@@ -10,7 +10,7 @@ main.o: main.cpp
 StudentRecord.o: StudentRecord.cpp StudentRecord.h counter.h
 	$(CC) StudentRecord.cpp -c $(CFLAGS)
 
-Databse.o: DataBase.cpp DataBase.h
+DataBase.o: DataBase.cpp DataBase.h
 	$(CC) DataBase.cpp -c $(CFLAGS)
 
 ./tokenlib/libtokenlib.so: ./tokenlib/tokenlib.cpp

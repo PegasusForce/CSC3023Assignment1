@@ -10,6 +10,8 @@
 #include <fstream>
 #include "StudentRecord.h"
 #include "cmdline_parser.h"
+#include "DataBase.h"
+
 void clear(void);
 
 using namespace std;
@@ -20,7 +22,7 @@ using namespace NDXKHA001;
  */
 int main(int argc, char* argv[]) {
     
-
+   
 	cmdline_parser parser;
 
 	if(!parser.process_cmdline(argc, argv))
@@ -35,7 +37,7 @@ int main(int argc, char* argv[]) {
 	string file_name = parser.get_filename();
 	cout << "Using file located at "+ file_name << endl;
 	cout << "-----------------------------------------" << endl;
-
+         DataBase db = DataBase(file_name);
 	//ifstream file(file_name.c_str());
     
     cout<< "Welcome to the Mage's College of Winterhold student database\n------------------------------------------------------------\n";
@@ -54,14 +56,22 @@ int main(int argc, char* argv[]) {
         case 1:
  //           cout << "You chose: add student"<<endl;
                 {
-                StudentRecord ghoragdush("Ghoragdush","the Goblinsmasher","GHO003","37 45 49");
-                StudentRecord jothridar("Jo'Thri-Dar","the Thief","JOT004","34 87 68");
-//                StudentRecord::print_counts(std::cout, "StudentRecord");
-//                tokenlib::check_tokens();
+                db.add(StudentRecord("Ghoragdush","the Goblinsmasher","GHO003","37 45 49"));
+                StudentRecord::print_counts(std::cout, "StudentRecord");
+                tokenlib::check_tokens();
                        }
         break;    
         case 2:
-            cout << "You chose: delete given student"<<endl;
+        {
+            cout<<"Enter the student number of the student you would like to delete: ";
+            std::string snum;
+            cin>>snum;
+           if(db.remove(snum)){
+               cout<<"Success!"<<endl;
+           }
+            
+        
+        }
         break;
         case 3:
             cout << "You chose: read database"<<endl;

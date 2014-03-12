@@ -7,14 +7,27 @@
 
 #ifndef DATABASE_H
 #define	DATABASE_H
+#include <list>
+#include "StudentRecord.h"
 namespace NDXKHA001{
-class DataBase {
+    class DataBase {
 public:
-    DataBase();
-    DataBase(const DataBase& orig);
+    
+    DataBase(std::string n):fileName(n){};
     virtual ~DataBase();
-private:
-
+    
+   //static bool initialize();
+    void add(NDXKHA001::StudentRecord sr);
+    bool remove(std::string snum);
+    void read();
+    void write();
+    void printData(std::string snum);
+    void printAverage(std::string cr);
+    void printAll();
+    
+    private:
+     std::list<NDXKHA001::StudentRecord> db;
+     std::string fileName;
 };
 }
 #endif	/* DATABASE_H */

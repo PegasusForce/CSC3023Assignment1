@@ -49,4 +49,10 @@ StudentRecord::~StudentRecord() {
         classRecord = cr; 
         token = tokenlib::acquire_token();
     }
+    
+    std::ostream & operator<<(std::ostream & out, const StudentRecord & s){
+        
+        out<<s.name<<"|"<<s.surname<<"|"<<s.studentNumber<<"|"<<s.classRecord<<s.token;
+        
+    }
 
