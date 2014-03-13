@@ -16,6 +16,7 @@
 #include <sstream>
 #include <string>
 using namespace NDXKHA001;
+//Stream operator overloads
 std::ostream & operator<<(std::ostream & out, const StudentRecord & s){
         
         out<<s.name<<"|"<<s.surname<<"|"<<s.studentNumber<<"|"<<s.classRecord<<"|"<<s.token<<std::endl;
@@ -27,10 +28,11 @@ std::string* operator>> (std::string* in, StudentRecord & sr)
     
     return in;
 }
-
+//Destructor
 DataBase::~DataBase() {
     db.clear();
 }
+//Check if a student already exists in database
 bool DataBase::check(std::string snum){
     std::list<StudentRecord>::iterator it = db.begin(), end = db.end();
 
@@ -44,6 +46,7 @@ bool DataBase::check(std::string snum){
     }
     return true;
 }
+
 void DataBase::add(StudentRecord sr){
    if(sr.token != -1 && check(sr.studentNumber)){ 
     db.push_back(sr);

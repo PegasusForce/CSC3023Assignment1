@@ -12,8 +12,8 @@
 #include "cmdline_parser.h"
 #include "DataBase.h"
 
-void clear(void);
-void stringToUpper(std::string&);
+void clear(void);//clear the output terminal
+void stringToUpper(std::string&);//convert string to uppercase
 
 using namespace std;
 using namespace NDXKHA001;
@@ -23,7 +23,7 @@ using namespace NDXKHA001;
  */
 int main(int argc, char* argv[]) {
     {
-   
+   //Use cmd_parser to get the filename from the terminal argument
 	cmdline_parser parser;
 
 	if(!parser.process_cmdline(argc, argv))
@@ -39,14 +39,14 @@ int main(int argc, char* argv[]) {
 	cout << "Using file located at "+ file_name << endl;
 	cout << "-----------------------------------------------------" << endl;
          DataBase db = DataBase(file_name);
-	//ifstream file(file_name.c_str());
-    
+	
+    //Start menu loop
     cout<< "Welcome to the Mage's College of Winterhold student database\n------------------------------------------------------------\n";
 
     int choice;
     bool exit = false;
     while(!exit){
-            cout<< "Please choose an option:\n\n1. Add Student\n2. Delete given student\n3. Read Database\n4. Save Database\n5. Display given student data\n6. Grade Student\n7. Display all student data\n8. Find winning student\n\n0. Exit"<<endl;
+            cout<< "Please choose an option:\n\n1. Add Student\n2. Delete given student\n3. Read Database\n4. Save Database\n5. Display given student data\n6. Grade Student\n7. Display all student data\n8. Find winning student\n\n0. Exit\n\nEnter choice: ";
     cin >>  choice;
      clear();
     switch(choice){
@@ -54,7 +54,7 @@ int main(int argc, char* argv[]) {
           exit = true;
           cout << "Wizards rule!";
         break;
-        case 1:
+        case 1://Add student
                 {
                     string name;
                     string surname;
@@ -72,12 +72,11 @@ int main(int argc, char* argv[]) {
                     getline(cin, cr);
                     
                     db.add(StudentRecord(name, surname, snum, cr));
-      //          StudentRecord::print_counts(std::cout, "StudentRecord");
-      //          tokenlib::check_tokens();
+      
                        }
         break;    
         case 2:
-        {
+        {//Remove a student from the database
             cout<<"Enter the student number of the student you would like to delete: ";
             std::string snum;
             
@@ -92,16 +91,14 @@ int main(int argc, char* argv[]) {
         
         }
         break;
-        case 3:
-          //  cout << "You chose: read database"<<endl;
+        case 3://Read the database file into the programs virtual database
             db.read();
         break;
-        case 4:{
-         //   cout << "You chose: save database"<<endl;
+        case 4:{//Write the virtual database to the database file; overwrites the file
             db.write();
         }
             break;
-        case 5:
+        case 5://Print out a specific student's details
         {   cout<<"Enter student's student number: ";
          string choice;
          
@@ -109,7 +106,7 @@ int main(int argc, char* argv[]) {
         stringToUpper(choice);
         db.printData(choice);}
             break;
-        case 6:
+        case 6://Calculate a students average mark
         {
             cout << "Enter the student number for the student you'd like to see the average: ";
             string snum;
@@ -119,13 +116,13 @@ int main(int argc, char* argv[]) {
             db.printAverage(snum);
         }
             break;
-        case 7:
+        case 7://Print all records
         {
             db.printAll();
         }
             break;
-        case 8:
-            //cout << "You chose: find winning student"<<endl;
+        case 8://Find the winning student
+            
         {
             db.findWinner();
         }

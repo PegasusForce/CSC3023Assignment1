@@ -1,0 +1,60 @@
+CSC3023F - Assignment 1
+_____________________
+NDXKHA001
+_________
+
+Program details
+---------------
+Written on a computer with the following specs:
+    CPU:      Intel Core i7-2670QM
+    OS:       Ubuntu Linux 13.10 (64 bit)
+    Language: C++11
+    Compiler: g++ 4.8.1
+    IDE:      Netbeans 7.4.3
+
+Compilation Instructions:
+-------------------------
+
+To compile open a terminal and change to the directory of the source files, then run the following commands in order:
+	make
+	mv ./dist/Debug/GNU-Linux-x86/assignment1 ./
+
+* the mv command is necessary because Netbeans places the executable in a separate folder
+
+To run the program use the following command:
+	./assignment1 -f %filename%
+
+*Replace %filename% with the name of the database file you would like to use
+
+Usage Instructions
+------------------
+When the program runs you will be greeted by a menu, simply enter the number of the function you want and press return.
+
+Class explination
+------------------
+
+main.cpp:
+    This is the main class which contains the menu and main program loop
+
+StudentRecord.cpp, StudentRecord.h:
+    The StudentRecord class contains the constructors for StudentRecord objects which hold the data of students.
+
+DataBase.cpp. Database.h:
+    The DataBase class holds the list that contains the database entries and all the functions that operate on the database.
+    This class also contains the stream operator overloads for StudentRecord objects
+
+cmdline_parser.cpp, cmdline.h: 
+    This class is used to get the filename of the database
+
+tokenlib.cpp, tokenlib.h:
+    This class is used to assign tokens to student records
+
+counter.h:
+    keeps track of the number of student records created and destroyed
+
+Notes
+-----
+* The program does not automatically create/load a database, you must use the write/read function to do this
+* Student Numbers are not case sensitive
+* The program will not allow more than one student with the same Student Number
+* In most cases the program does not check for incorrect input

@@ -16,14 +16,14 @@ public:
     DataBase(std::string n):fileName(n){};
     virtual ~DataBase();
     
-   //static bool initialize();
+  
     void add(NDXKHA001::StudentRecord sr);
     bool remove(std::string snum);
-    bool check(std::string snum);
-    void read();
-    void write();
-    void printData(std::string snum);
-    void printAverage(std::string snum);
+    bool check(std::string snum);//check if a student already exists in the database
+    void read(); //read database file into list
+    void write();//write list into file
+    void printData(std::string snum);//print a students data
+    void printAverage(std::string snum);//print a students average
     void printAll();
     void findWinner();
     
