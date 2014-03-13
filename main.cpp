@@ -13,6 +13,7 @@
 #include "DataBase.h"
 
 void clear(void);
+void stringToUpper(std::string&);
 
 using namespace std;
 using namespace NDXKHA001;
@@ -36,7 +37,7 @@ int main(int argc, char* argv[]) {
 
 	string file_name = parser.get_filename();
 	cout << "Using file located at "+ file_name << endl;
-	cout << "-----------------------------------------" << endl;
+	cout << "-----------------------------------------------------" << endl;
          DataBase db = DataBase(file_name);
 	//ifstream file(file_name.c_str());
     
@@ -65,8 +66,10 @@ int main(int argc, char* argv[]) {
                     cin>> surname;
                     cout<<"Enter the student's student number: ";
                     cin>>snum;
+                    stringToUpper(snum);
                     cout<<"Enter the students class record (e.g. 100 89 75 36 ): ";
-                    cin>>cr;
+                    cin.ignore();
+                    getline(cin, cr);
                     
                     db.add(StudentRecord(name, surname, snum, cr));
       //          StudentRecord::print_counts(std::cout, "StudentRecord");
@@ -77,9 +80,13 @@ int main(int argc, char* argv[]) {
         {
             cout<<"Enter the student number of the student you would like to delete: ";
             std::string snum;
+            
             cin>>snum;
+            stringToUpper(snum);
            if(db.remove(snum)){
                cout<<"Success!"<<endl;
+           }else{
+               cout<<"Fail!"<<endl;
            }
             
         
@@ -95,16 +102,33 @@ int main(int argc, char* argv[]) {
         }
             break;
         case 5:
-            cout << "You chose: display given student data"<<endl;
+        {   cout<<"Enter student's student number: ";
+         string choice;
+         
+        cin>>choice;
+        stringToUpper(choice);
+        db.printData(choice);}
             break;
         case 6:
-            cout << "You chose: grade student"<<endl;
+        {
+            cout << "Enter the student number for the student you'd like to see the average: ";
+            string snum;
+       
+            cin>> snum;
+            stringToUpper(snum);
+            db.printAverage(snum);
+        }
             break;
         case 7:
-            cout << "You chose: display all student data"<<endl;
+        {
+            db.printAll();
+        }
             break;
         case 8:
-            cout << "You chose: find winning student"<<endl;
+            //cout << "You chose: find winning student"<<endl;
+        {
+            db.findWinner();
+        }
             break;
     }
     cout<< endl;
@@ -119,3 +143,10 @@ tokenlib::final_token_check();
 }
 void clear(void) { std::cout << std::string(100,'\n'); }
 
+void stringToUpper(string &s)
+{
+   for(unsigned int l = 0; l < s.length(); l++)
+  {
+    s[l] = toupper(s[l]);
+  }
+}

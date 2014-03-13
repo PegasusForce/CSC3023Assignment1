@@ -19,11 +19,13 @@ public:
    //static bool initialize();
     void add(NDXKHA001::StudentRecord sr);
     bool remove(std::string snum);
+    bool check(std::string snum);
     void read();
     void write();
     void printData(std::string snum);
-    void printAverage(std::string cr);
+    void printAverage(std::string snum);
     void printAll();
+    void findWinner();
     
     private:
      std::list<NDXKHA001::StudentRecord> db;

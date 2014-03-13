@@ -36,7 +36,7 @@ StudentRecord::~StudentRecord() {
             name = std::move(rhs.name);
             surname = std::move(rhs.surname);
             studentNumber = std::move(rhs.studentNumber);
-            classRecord = std::move(rhs.studentNumber);
+            classRecord = std::move(rhs.classRecord);
             token = rhs.token;
             rhs.token = -1;
         }

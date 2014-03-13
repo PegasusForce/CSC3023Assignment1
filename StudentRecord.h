@@ -16,9 +16,10 @@ namespace NDXKHA001{
 class StudentRecord: public sjp::counter<StudentRecord>{
     public:
     //Default constructor
-    StudentRecord(): name("Ulfric"), surname("Stormcloak"), studentNumber("STRULF001"), classRecord("100 100 100 100"), token(tokenlib::acquire_token()){};
+    StudentRecord(): name("Ulfric"), surname("Stormcloak"), studentNumber("STRULF001"), classRecord("100 100 100 100"), token(-1){};
     //Standard constructor
     StudentRecord(std::string n, std::string sname, std::string snum, std::string cr);
+   
     //Copy Constructor
     StudentRecord(const StudentRecord& orig): name(orig.name), surname(orig.surname), studentNumber(orig.studentNumber), classRecord(orig.classRecord), token(tokenlib::acquire_token()){};
     //Destructor
@@ -29,11 +30,7 @@ class StudentRecord: public sjp::counter<StudentRecord>{
     StudentRecord& operator=(const StudentRecord & rhs);
     //Move Assignment Operator
     StudentRecord& operator=(StudentRecord && rhs);
-    // output stream operator
-    
-    
-    
-
+   
     std::string name;
     std::string surname;
     std::string studentNumber;
